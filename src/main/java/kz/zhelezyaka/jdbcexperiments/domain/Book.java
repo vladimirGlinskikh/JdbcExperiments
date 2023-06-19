@@ -1,9 +1,6 @@
 package kz.zhelezyaka.jdbcexperiments.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,5 +20,15 @@ public class Book {
     private String title;
     private String isbn;
     private String publisher;
-    private Long authorId;
+
+    @Transient
+    private Author authorId;
+
+    public Author getAuthor(){
+        return authorId;
+    }
+
+    public void setAuthor(Author authorId) {
+        this.authorId = authorId;
+    }
 }
