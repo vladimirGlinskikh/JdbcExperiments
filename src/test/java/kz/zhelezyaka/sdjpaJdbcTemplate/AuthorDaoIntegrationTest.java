@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("local")
 @DataJpaTest
-@Import({AuthorDaoImpl.class, BookDaoImpl.class})
+@Import({AuthorDaoImpl.class})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class AuthorDaoIntegrationTest {
 
