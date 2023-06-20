@@ -1,6 +1,7 @@
 package kz.zhelezyaka.sdjpaJdbcTemplate.dao;
 
 import kz.zhelezyaka.sdjpaJdbcTemplate.domain.Author;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -32,5 +33,9 @@ public class AuthorDaoImpl implements AuthorDao {
     @Override
     public void deleteAuthorById(Long id) {
 
+    }
+
+    private RowMapper<Author> getRowMapper() {
+        return new AuthorMapper();
     }
 }
