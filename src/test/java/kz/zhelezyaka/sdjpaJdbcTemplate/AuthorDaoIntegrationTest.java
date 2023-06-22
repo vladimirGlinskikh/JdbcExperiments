@@ -24,6 +24,18 @@ public class AuthorDaoIntegrationTest {
     AuthorDao authorDao;
 
     @Test
+    void testInsertAuthor() {
+        Author author = new Author();
+        author.setFirstName("Vladimir");
+        author.setLastName("GL");
+
+        Author saved = authorDao.saveNewAuthor(author);
+        System.out.println("New Id is: " + saved.getId());
+
+        assertThat(saved).isNotNull();
+    }
+
+    @Test
     void testDeleteAuthor() {
         Author author = new Author();
         author.setFirstName("Vladimir");
@@ -40,7 +52,7 @@ public class AuthorDaoIntegrationTest {
     void testUpdateAuthor() {
         Author author = new Author();
         author.setFirstName("Vladimir");
-        author.setLastName("G");
+        author.setLastName("GLINZ");
 
         Author saved = authorDao.saveNewAuthor(author);
 
