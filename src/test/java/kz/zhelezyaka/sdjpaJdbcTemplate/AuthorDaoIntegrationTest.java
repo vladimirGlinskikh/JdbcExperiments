@@ -148,6 +148,6 @@ public class AuthorDaoIntegrationTest {
     @Test
     void testGetAuthor() {
         Author author = authorDao.getById(1L);
-        assertThat(author).isNotNull();
+        assertThat(author.getId()).isNotNull();
     }
 }
