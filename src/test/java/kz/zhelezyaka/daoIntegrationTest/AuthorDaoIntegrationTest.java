@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @DataJpaTest
 @ComponentScan(basePackages = {"kz.zhelezyaka.sdjpaHibernateDAO.dao"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class DaoIntegrationTest {
+public class AuthorDaoIntegrationTest {
 
     @Autowired
     AuthorDao authorDao;

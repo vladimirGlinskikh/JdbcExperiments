@@ -1,13 +1,21 @@
 package kz.zhelezyaka.sdjpaHibernateDAO.dao;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import kz.zhelezyaka.sdjpaHibernateDAO.domain.Author;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AuthorDaoImpl implements AuthorDao {
+    private final EntityManagerFactory entityManagerFactory;
+
+    public AuthorDaoImpl(EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
+    }
+
     @Override
     public Author getById(Long id) {
-        return null;
+        return getEntityManager().find(Author.class, id);
     }
 
     @Override
@@ -28,5 +36,9 @@ public class AuthorDaoImpl implements AuthorDao {
     @Override
     public void deleteAuthorById(Long id) {
 
+    }
+
+    private EntityManager getEntityManager() {
+        return entityManagerFactory.createEntityManager();
     }
 }
