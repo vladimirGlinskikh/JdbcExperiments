@@ -61,6 +61,7 @@ public class AuthorDaoIntegrationTest {
         Author saved = authorDao.saveNewAuthor(author);
 
         assertThat(saved).isNotNull();
+        assertThat(saved.getId()).isNotNull();
     }
 
     @Test
