@@ -2,6 +2,7 @@ package kz.zhelezyaka.sdjpaHibernateDAO.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
 import kz.zhelezyaka.sdjpaHibernateDAO.domain.Author;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,11 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Author findAuthorByName(String firstName, String lastName) {
-        return null;
+        TypedQuery<Author> query = getEntityManager().createQuery("SELECT a FROM Author a " +
+                "WHERE a.firstName = :first_name and a.lastName = :last_name", Author.class);
+        query.setParameter("first_name", firstName);
+        query.setParameter("last_name", lastName);
+        return query.getSingleResult();
     }
 
     @Override
