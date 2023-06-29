@@ -2,9 +2,12 @@ package kz.zhelezyaka.sdjpaHibernateDAO.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import kz.zhelezyaka.sdjpaHibernateDAO.domain.Author;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class AuthorDaoImpl implements AuthorDao {
@@ -12,6 +15,19 @@ public class AuthorDaoImpl implements AuthorDao {
 
     public AuthorDaoImpl(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
+    }
+
+    @Override
+    public List<Author> listAuthorByLastNameLike(String lastName) {
+        EntityManager entityManager = getEntityManager();
+        try {
+            Query query = entityManager.createQuery("SELECT a FROM Author a WHERE a.lastName like :last_name");
+            query.setParameter("last_name", lastName + "%");
+            List<Author> authors = query.getResultList();
+            return authors;
+        } finally {
+            entityManager.close();
+        }
     }
 
     @Override
