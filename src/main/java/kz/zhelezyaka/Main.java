@@ -1,9 +1,5 @@
 package kz.zhelezyaka;
 
-import jakarta.annotation.Nonnull;
-import lombok.NonNull;
-import org.antlr.v4.runtime.misc.NotNull;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -20,12 +16,11 @@ public class Main {
 
     }
 
-    @NotNull
     public static String concatStrings(List<String> list) {
         StringBuilder sb = new StringBuilder();
 
         for (String str : list) {
-            if (Objects.nonNull(str) && str.contains("кошка")) {
+            if (str != null && str.contains("кошка")) {
                 sb.append(str);
             }
         }
